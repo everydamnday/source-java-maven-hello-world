@@ -1,0 +1,22 @@
+---
+- name: BUILD AND PUSH DOCKER IMAGE
+  hosts: ansible-host
+  tasks:
+    - name: BUILD DOCKER IMAGE
+       command: "docker image build -t hans9102/mywebapp tomcat-docker-image-build"
+    - name: LOGIN TO DOCKER HUB
+       command: "docker login"
+    - name: PUSH IMAGE TO DOCKER HUB
+       command: "docker push hans9102/mywebapp"
+    - name: REMOVE BUILDED LOCAL IMAGE
+       command: "docker image rm c1t1d0s7/mywebapp tomcat:9-jdk11"
+
+- name: Run Docker CONTAINER
+  hosts: docker-host
+  tasks:  
+    - name: STOP EXISTS CONTAINER
+       command: "docker stop tomcat-mywebapp" 
+    - name: REMOVE EXISTS CONTAINER
+       command: "docker rm tomcat-mywebapp"
+    - name: RUN DOCKER CONTAINER
+       command: "docker run -d --name tomcat-mywebapp -p 8080:8080 c1t1d0s7/mywebapp"
