@@ -4,10 +4,10 @@
   gather_facts: false
   tasks:
     - name: BUILD DOCKER IMAGE
-       command: "docker image build -t hans9102/mywebapp ."
+      command: "docker image build -t hans9102/mywebapp ."
     - name: LOGIN TO DOCKER HUB
-       command: "docker login"
+      command: "docker login"
     - name: PUSH IMAGE TO DOCKER HUB
-       command: "docker push hans9102/mywebapp"
+      command: "docker push hans9102/mywebapp"
     - name: REMOVE BUILDED LOCAL IMAGE
-       command: "docker image rm hans9102/mywebapp tomcat:9-jdk11"  
+      command: "docker image rm hans9102/mywebapp tomcat:9-jdk11"  
