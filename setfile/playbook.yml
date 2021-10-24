@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
     - name: BUILD DOCKER IMAGE
-       command: "docker image build -t hans9102/mywebapp tomcat-docker-image-build"
+       command: "docker image build -t hans9102/mywebapp ."
     - name: LOGIN TO DOCKER HUB
        command: "docker login"
     - name: PUSH IMAGE TO DOCKER HUB
